@@ -65,9 +65,12 @@ function Analyze(a) {
 	res = res.replace(/\\etal/g, "et al.");
 	// comments
 	res = res.replace(/(?<!\\)%.+/g, "");
+	// emph
+	res = res.replace(/\{\\\w+/gs, "").replace(/\\\/\}/g, "");
 	// textit, $, and ~
 	res = res.replace(/\\\w+{/gs, "").replace(/[\}\$]/g, "").replace(/\~/g, " ");
 	// double white spaces
+	res = res.replace(/\n/g, " ");
 	res = res.replace(/\s\s+/g, " ");
 	
 	// \% percentage
