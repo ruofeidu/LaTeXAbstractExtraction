@@ -12,24 +12,24 @@
 <div class="row" align="center">
 <h1>Abstract Extraction from LaTeX</h1>
 <a href="http://duruofei.com" target="_blank"><h3>Ruofei Du</h3></a>
-<p align="left">In paper writing, we often need to extract the abstract from LaTeX source and paste to the submission system.
-Reformating the abstract is painful. So I develop this software for automatically remove LaTeX symbols. Put the LaTeX source code in the left, the extracted abstract is shown on the right.</p>
+<p align="left">
+It has been a painful job to convert the LaTeX source code to plain text for submitting paper abstracts.
+Hence, I have developed <a href="http://tool.duruofei.com/abstract">this tool</a> for automatically removing LaTeX symbols. Please paste your LaTeX source code on the left, the extracted plain text will be shown on the right. The extracted text could be further processed by <a href="https://www.grammarly.com">Grammarly</a>.
+</p>
 </div>
 
 <div class="row" align="center">
   <div class="col-md-6">
   <textarea rows="20" id="in_a" style="width:100%; font-size:1.5em">
-  % Comments
-\abstract{This paper presents an awesome \textit{System} that describes~\textbf{a lot of}~things. 
-% Another comments
-We have a {\sc Great Name\/} that implies {\em something important\/}.
+% One comment
+\abstract{This paper presents an awesome \textit{system} that describes~\textbf{a lot of}~components. % Another comment inline
+We have come up with a {\sc Great Name\/} that implies {\em something significant\/}.
+
+Compared with Du~\etal~\cite{du2016social}, we can convert 100\% and 360\degree~field of views correctly.
+In this example, we observe an $100\times$ ``speedup''.
 
 
-
-Both 100\% and 100\degree~field of view can be intepreted correctly.
-In the experiment, we observe an $100X$ speedup.
-}
-% Comments 
+} % Final comment 
  
   </textarea>
   </div>
@@ -42,7 +42,7 @@ Clean results
 </div>
 
 <div class="row" align="center">
-  <button type="button" id="analyze">Show me the abstract!</button>
+  <button type="button" id="analyze">Show me the plain text!</button>
 </div>
 
   

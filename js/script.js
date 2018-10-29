@@ -1,3 +1,5 @@
+"use strict";
+
 function Trim(str) {
 	return str.trim().replace(/[\r\n\s]/g,"");
 }
@@ -18,15 +20,33 @@ function Analyze(a) {
 		res = match[1];
 	}
 	
+	// citations
+	res = res.replace(/\\cite\{[\w\d,:]+\}/g, "");
+	res = res.replace(/\\ref\{[\w\d,:]+\}/g, "X");
+	res = res.replace(/\\begin\{[\w\d,:]+\}\[.+\]/g, "");
+	res = res.replace(/\\end\{[\w\d,:]+\}/g, "");
+	res = res.replace(/\\label\{[\w\d,:]+\}/g, "");
+	res = res.replace(/\\centering/g, "");
+	res = res.replace(/\\caption/g, "");
+	res = res.replace(/\\includegraphics[\[\w\d\,\.\:\=\/\\]+\]\{[\w\d,\.\:\/\\\_]+\}/g, "");
+	
 	// latex symbols
 	res = res.replace(/\\degree/g, "°");
+	res = res.replace(/\\times/g, "×");
 	res = res.replace(/\\etal/g, "et al.");
+	res = res.replace(/``/g, '"');
+	res = res.replace(/""/g, '"');
+	res = res.replace(/ \./g, '.');
+	
 	// comments
 	res = res.replace(/([^\\]|^)%.+/gm, ""); // Fixed for Firefox
-	// emph
+	
+	// emph and italics
 	res = res.replace(/\{\\\w+/gm, "").replace(/\\\/\}/g, "");
+	
 	// textit, $, and ~
 	res = res.replace(/\\\w+{/gm, "").replace(/[\}\$]/g, "").replace(/\~/g, " ");
+	
 	// double white spaces
 	res = res.replace(/\n/g, " ");
 	res = res.replace(/\s\s+/g, " ");
@@ -56,6 +76,8 @@ $(document).ready(function() {
     });
 	
 	$('#analyze').click();
+	
+	$("a").attr("target", "_blank");
 });
 
 
