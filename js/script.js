@@ -56,12 +56,13 @@ function Analyze(a) {
   // double white spaces
   res = res.replace(/\n/g, ' ');
   res = res.replace(/\s\s+/g, ' ');
+  res = res.replace(/([\.,])(\s)([\.,])/g, '$1$3');
 
   // \% percentage
   res = res.replace(/\\\%/g, '%');
   res = res.trim();
 
-  $('#words').html(WordCount(res) + ' words');
+  $('#words').html('Count: ' + WordCount(res) + ' words');
   return res;
 }
 
