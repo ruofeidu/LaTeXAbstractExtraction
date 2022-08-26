@@ -1,7 +1,11 @@
-"use strict";
+'use strict';
 
 function Trim(str) {
-  return str.trim().replace(/[\r\n\s]/g, "");
+  return str.trim().replace(/[\r\n\s]/g, '');
+}
+
+function WordCount(str) {
+  return str.split(' ').length;
 }
 
 function Analyze(a) {
@@ -21,68 +25,64 @@ function Analyze(a) {
   }
 
   // citations
-  res = res.replace(/\\cite\{[\w\d,:]+\}/g, "");
-  res = res.replace(/\\ref\{[\w\d,:]+\}/g, "X");
-  res = res.replace(/\\begin\{[\w\d,:]+\}\[.+\]/g, "");
-  res = res.replace(/\\end\{[\w\d,:]+\}/g, "");
-  res = res.replace(/\\label\{[\w\d,:]+\}/g, "");
-  res = res.replace(/\\centering/g, "");
-  res = res.replace(/\\caption/g, "");
+  res = res.replace(/\\cite\{[\w\d,:]+\}/g, '');
+  res = res.replace(/\\ref\{[\w\d,:]+\}/g, 'X');
+  res = res.replace(/\\begin\{[\w\d,:]+\}\[.+\]/g, '');
+  res = res.replace(/\\end\{[\w\d,:]+\}/g, '');
+  res = res.replace(/\\label\{[\w\d,:]+\}/g, '');
+  res = res.replace(/\\centering/g, '');
+  res = res.replace(/\\caption/g, '');
   res = res.replace(
-    /\\includegraphics[\[\w\d\,\.\:\=\/\\]+\]\{[\w\d,\.\:\/\\\_]+\}/g,
-    ""
-  );
+      /\\includegraphics[\[\w\d\,\.\:\=\/\\]+\]\{[\w\d,\.\:\/\\\_]+\}/g, '');
 
   // latex symbols
-  res = res.replace(/\\degree/g, "°");
-  res = res.replace(/\\times/g, "×");
-  res = res.replace(/\\etal/g, "et al.");
+  res = res.replace(/\\degree/g, '°');
+  res = res.replace(/\\times/g, '×');
+  res = res.replace(/\\etal/g, 'et al.');
   res = res.replace(/``/g, '"');
   res = res.replace(/""/g, '"');
-  res = res.replace(/ \./g, ".");
+  res = res.replace(/ \./g, '.');
 
   // comments
-  res = res.replace(/([^\\]|^)%.+/gm, ""); // Fixed for Firefox
+  res = res.replace(/([^\\]|^)%.+/gm, '');  // Fixed for Firefox
 
   // emph and italics
-  res = res.replace(/\{\\\w+/gm, "").replace(/\\\/\}/g, "");
+  res = res.replace(/\{\\\w+/gm, '').replace(/\\\/\}/g, '');
 
   // textit, $, and ~
-  res = res
-    .replace(/\\\w+{/gm, "")
-    .replace(/[\}\$]/g, "")
-    .replace(/\~/g, " ");
-  res = res.replace(/\\sim/g, "~");
+  res = res.replace(/\\\w+{/gm, '').replace(/[\}\$]/g, '').replace(/\~/g, ' ');
+  res = res.replace(/\\sim/g, '~');
 
   // double white spaces
-  res = res.replace(/\n/g, " ");
-  res = res.replace(/\s\s+/g, " ");
+  res = res.replace(/\n/g, ' ');
+  res = res.replace(/\s\s+/g, ' ');
 
   // \% percentage
-  res = res.replace(/\\\%/g, "%");
+  res = res.replace(/\\\%/g, '%');
   res = res.trim();
 
+  $('#words').html(WordCount(res) + ' words');
   return res;
 }
 
-$(document).ready(function () {
-  $("#in_a").mouseover(function () {
+$(document).ready(function() {
+  $('#in_a').mouseover(function() {
     $(this).select();
   });
 
-  $("#out").mouseover(function () {
+  $('#out').mouseover(function() {
     $(this).select();
   });
 
-  $("#analyze").click(function () {
-    $("#out").val(Analyze($("#in_a").val()));
+  $('#analyze').click(function() {
+    $('#out').val(Analyze($('#in_a').val()));
   });
 
-  $("#in_a").keyup(function () {
-    $("#out").val(Analyze($("#in_a").val()));
+  $('#in_a').keyup(function() {
+    $('#out').val(Analyze($('#in_a').val()));
   });
 
-  $("#analyze").click();
+  $('#analyze').click();
 
-  $("a").attr("target", "_blank");
+  $('a').attr('target', '_blank');
 });

@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Abstract Extraction from LaTeX | Ruofei Du</title>
- <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <title>Abstract Extraction from LaTeX | Ruofei Du</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-29242802-1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-29242802-1");
+  </script>
 </head>
 
 <body>
@@ -29,8 +43,8 @@ Compared with Du~\etal~\cite{du2016social}, we can convert 100\% and 360\degree~
 In this example, we observe an $100\times$ ``speedup''.
 
 
-} % Final comment 
- 
+} % Final comment
+
   </textarea>
   </div>
 
@@ -42,10 +56,14 @@ Clean results
 </div>
 
 <div class="row" align="center">
-  <button type="button" id="analyze" class="btn btn-success">Show me the plain text!</button>
+  <span id="words"></span>
 </div>
 
-  
+<div class="row" align="center">
+  <button type="button" id="analyze" class="btn btn-success">Show me the abstract!</button>
+</div>
+
+
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
