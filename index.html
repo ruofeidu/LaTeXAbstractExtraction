@@ -1,72 +1,100 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Abstract Extraction from LaTeX | Ruofei Du</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=UA-29242802-1"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+  <head>
+    <title>Abstract Extraction from LaTeX | Ruofei Du</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-29242802-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    gtag("config", "UA-29242802-1");
-  </script>
-</head>
+      gtag("config", "UA-29242802-1");
+    </script>
+  </head>
 
-<body>
-<div class="container">
-<div class="row" align="center">
-<h1>Abstract Extraction from LaTeX</h1>
-<a href="http://duruofei.com" target="_blank"><h3>Ruofei Du</h3></a>
-<p align="left">
-It has been a painful job to convert the LaTeX source code to plain text for submitting paper abstracts.
-Hence, I have developed <a href="http://tool.duruofei.com/abstract">this tool</a> for automatically removing LaTeX symbols. Please paste your LaTeX source code on the left, the extracted plain text will be shown on the right. The extracted text could be further processed by <a href="https://www.grammarly.com">Grammarly</a>.
-</p>
-</div>
+  <body>
+    <div class="container">
+      <div class="row" align="center">
+        <h1>Abstract Extraction from LaTeX</h1>
+        <a href="http://duruofei.com" target="_blank"><h3>Ruofei Du</h3></a>
+        <p align="left">
+          It has been a painful job to convert the LaTeX source code to plain
+          text for submitting paper abstracts. Hence, I have developed
+          <a href="http://tool.duruofei.com/abstract">this tool</a> for
+          automatically removing LaTeX symbols. Please paste your LaTeX source
+          code on the left, the extracted plain text will be shown on the right.
+          The extracted text could be further processed by
+          <a href="https://www.grammarly.com">Grammarly</a>.
+        </p>
+      </div>
 
-<div class="row" align="center">
-  <div class="col-md-6">
-  <textarea rows="20" id="in_a" style="width:100%; font-size:1.5em">
+      <div class="row" align="center">
+        <div class="col-md-6">
+          <textarea rows="20" id="in_a" style="width: 100%; font-size: 1.5em">
 % One comment
 \abstract{This paper presents an awesome \textit{system} that describes~\textbf{a lot of}~components. % Another comment inline
 We have come up with a {\sc Great Name\/} that implies {\em something significant\/}.
 
-Compared with Du~\etal~\cite{du2016social}, we can convert 100\% and 360\degree~field of views correctly.
+Compared with Du~\etal~\cite{du2016social} \& \SystemName, we can convert 100\% and 360\degree~field of ``ML'' views correctly.
 In this example, we observe an $100\times$ ``speedup''.
 
 
 } % Final comment
 
-  </textarea>
-  </div>
+  </textarea
+          >
+        </div>
 
-  <div class="col-md-6">
-  <textarea rows="20" id="out" style="width:100%; font-size:1.5em">
+        <div class="col-md-6">
+          <textarea rows="20" id="out" style="width: 100%; font-size: 1.5em">
 Clean results
-  </textarea>
-  </div>
-</div>
+  </textarea
+          >
+        </div>
+      </div>
+      <div class="row" align="center">
+        <div class="col-md-6">
+          <input type="text" id="sysin" style="width:100%; font-size:1.5em"/
+          value="\SystemName">
+        </div>
+        <div class="col-md-6" />
+        <input
+          type="text"
+          id="sysout"
+          style="width: 100%; font-size: 1.5em"
+          value="MySystem"
+        />
+      </div>
+    </div>
 
-<div class="row" align="center">
-  <span id="words"></span>
-</div>
+    <div class="row" align="center">
+      <span id="words"></span>
+    </div>
 
-<div class="row" align="center">
-  <button type="button" id="analyze" class="btn btn-success">Show me the abstract!</button>
-</div>
+  </br>
 
+    <div class="row" align="center">
+      <button type="button" id="analyze" class="btn btn-success">
+        Show me the abstract!
+      </button>
+    </div>
 
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/script.js"></script>
-<script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5zvofxjsg0h&amp;m=2&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
-</body>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    <script
+      type="text/javascript"
+      src="//rf.revolvermaps.com/0/0/8.js?i=5zvofxjsg0h&amp;m=2&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33"
+      async="async"
+    ></script>
+  </body>
 </html>
