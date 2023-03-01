@@ -41,9 +41,11 @@ function Analyze(a) {
   res = res.replace(/\\etal/g, 'et al.');
   res = res.replace(/``/g, '"');
   res = res.replace(/""/g, '"');
+  res = res.replace(/\'\'/g, '"');
   res = res.replace(/\\&/g, '&');
   res = res.replace(/ \./g, '.');
-  res = res.replace($('#sysin').val(), $('#sysout').val());
+  let sysin = new RegExp('\\' + $('#sysin').val(), 'g');
+  res = res.replace(sysin, $('#sysout').val());
 
   // comments
   res = res.replace(/([^\\]|^)%.+/gm, '');  // Fixed for Firefox
