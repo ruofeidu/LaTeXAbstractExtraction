@@ -71,6 +71,16 @@ function Analyze(a) {
 }
 
 $(document).ready(function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const system = urlParams.get('system');
+  const label = urlParams.get('label');
+  if (label !== null) {
+    $('#sysin').val(label);
+  }
+  if (system !== null) {
+    $('#sysout').val(system);
+  }
+
   $('#in_a').mouseover(function() {
     $(this).select();
   });
